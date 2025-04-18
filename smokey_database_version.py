@@ -219,7 +219,7 @@ def run_query(url, name, notify, minPrice, maxPrice, chatid):
         '''Run a query using Selenium (bypasses anti-bot protections)'''
         print(datetime.now().strftime("%Y-%m-%d, %H:%M:%S") + f" running query (\"{name}\" - {url})...")
 
-        global queries
+        #global queries
         products_deleted = False
         msg = []
 
@@ -289,7 +289,7 @@ def run_query(url, name, notify, minPrice, maxPrice, chatid):
 
         if len(msg) > 0:
             if notify:
-                if not args.win_notifyoff and platform.system() == "Windows":
+                if not win_notifyoff and platform.system() == "Windows":
                     global toaster
                     toaster.show_toast("New announcements", "Query: " + name)
                 
@@ -351,8 +351,9 @@ def in_between(now, start, end):
 def main():
   try:
     ### Setup commands ###
+    global win_notifyoff
     global driver
-
+    win_notifyoff = False
 
 
     chrome_options = Options()
@@ -369,7 +370,7 @@ def main():
 
     querie_list.append(["https://www.subito.it/annunci-italia/vendita/abbigliamento-accessori/orologi-e-gioielli/?q=longiness&shp=true&order=datedesc", "Longiness", "50", "2000","-1002530005192" ])
     querie_list.append(["https://www.subito.it/annunci-italia/vendita/abbigliamento-accessori/?q=Omega&shp=true&order=datedesc", "Omega", "10", "3000","-1002413715692" ])
-    querie_list.append(["https://www.subito.it/annunci-italia/vendita/abbigliamento-accessori/orologi-e-gioielli/?q=Cartier&shp=true&order=datedesc", "Cartier", "10", "3000","--1002562562736" ])
+    querie_list.append(["https://www.subito.it/annunci-italia/vendita/abbigliamento-accessori/orologi-e-gioielli/?q=Cartier&shp=true&order=datedesc", "Cartier", "10", "3000","-1002562562736" ])
     querie_list.append(["https://www.subito.it/annunci-italia/vendita/abbigliamento-accessori/orologi-e-gioielli/?q=Zenith&shp=true&order=datedesc", "Zenith", "10", "3000","-1002530445224" ])
     
     for queries in querie_list:
@@ -408,6 +409,7 @@ def main():
                 #save_queries()
             t.sleep(int(delay))
   except KeyboardInterrupt:
+        
         print("Stopping bot...")
   finally:
         driver.quit()

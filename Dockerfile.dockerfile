@@ -1,39 +1,40 @@
 FROM python:3.11-slim
 
-# Evita interattività e aggiorna il sistema
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Installa dipendenze di sistema
+# Install dependencies
 RUN apt-get update && apt-get install -y \
-    chromium-driver \
-    chromium \
+    wget \
     curl \
     unzip \
     gnupg \
-    wget \
+    ca-certificates \
     fonts-liberation \
     libnss3 \
-    libatk-bridge2.0-0 \
     libxss1 \
-    libgtk-3-0 \
+    libappindicator3-1 \
     libasound2 \
-    libgbm1 \
-    libxshmfence1 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    libatk-bridge2.0-0 \
+    libgtk-3-0 \
+    libx11-xcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxrandr2 \
+    xdg-utils \
+    chromium \
+    chromium-driver \
+    --no-install-recommends && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Imposta variabili d'ambiente per Selenium
+# Set env var so Chrome works
 ENV CHROME_BIN=/usr/bin/chromium
-ENV PATH=$PATH:/usr/bin/chromium
 
-# Crea directory app
+# Copy project
 WORKDIR /app
-
-# Copia i file
 COPY . .
 
-# Installa le dipendenze Python
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Install Python deps
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando di avvio
+# Run app
 CMD ["python3", "main.py"]

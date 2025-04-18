@@ -1,7 +1,12 @@
+undetected-chromedriver
 selenium
-python-telegram-bot==13.15
-webdriver-manager
-undetected-chromedriver==3.5.3
+python-telegram-bot
+#sqlite3
+apscheduler
+python-dotenv
+requests
+beautifulsoup4
+
 
 
 

@@ -1,9 +1,5 @@
 selenium
 requests
-json
-os
-platform
-re
 datetime
 time
 python-telegram-bot==13.15

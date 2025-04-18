@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.service import Service
 
 #import requests
 #from bs4 import BeautifulSoup, Tag
-import json
+
 import os
 import platform
 import requests

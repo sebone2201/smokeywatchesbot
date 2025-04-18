@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: subito-bot
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "python3 main.py"
+    plan: free

@@ -379,6 +379,7 @@ def in_between(now, start, end):
 def main():
   try:
     ### Setup commands ###
+    global driver
 
 
 

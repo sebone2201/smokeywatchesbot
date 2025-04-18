@@ -1,2 +1,7 @@
-build:
-  command: ./build.sh
+services:
+  - type: worker
+    name: subitobot
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    startCommand: ./start.sh

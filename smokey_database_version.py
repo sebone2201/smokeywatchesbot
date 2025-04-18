@@ -381,6 +381,7 @@ def main():
 
     #if args.activeHour is None:
     activeHour="0"
+    delay = "120"
 
     
     pauseHour="0"
@@ -403,9 +404,9 @@ def main():
                 refresh(notify)
                 notify = True
                 print()
-                print(str(args.delay) + " seconds to next poll.")
+                print(str(delay) + " seconds to next poll.")
                 #save_queries()
-            t.sleep(int(args.delay))
+            t.sleep(int(delay))
   except KeyboardInterrupt:
         print("Stopping bot...")
   finally:

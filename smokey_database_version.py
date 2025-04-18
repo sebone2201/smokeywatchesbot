@@ -414,7 +414,7 @@ def main():
   finally:
         driver.quit()
 
-main()
+
 
 
 

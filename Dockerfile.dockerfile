@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
+   
+ENV PORT 8000
 
 # Aggiunge repository ufficiale di Chrome e lo installa
 RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg && \

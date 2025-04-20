@@ -36,6 +36,9 @@ RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor
     apt-get install -y google-chrome-stable && \
     rm -rf /var/lib/apt/lists/*
 
+RUN google-chrome --version
+
+
 # Installa le dipendenze Python
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

@@ -23,6 +23,10 @@ RUN apt-get update && apt-get install -y \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
+    libxss1 \                     # <-- Aggiungi questo
+    libxtst6 \                   # <-- E questo
+    libglib2.0-0 \               # <-- E questo
+    libu2f-udev \    
     xdg-utils \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*

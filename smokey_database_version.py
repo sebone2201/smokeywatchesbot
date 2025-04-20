@@ -361,7 +361,7 @@ def main():
     chrome_options = webdriver.ChromeOptions()
     #options = uc.ChromeOptions()
     #options.headless = True
-    #options.add_argument("--no sandbox")
+    #options.add_argument("--no sandbox")SS
     #options.add_argument("--disable-dev-shm-usage")
     chrome_options.set_capability('browserless:token', os.environ['BROWSERLESS_TOKEN'])
     chrome_options.add_argument("--headless")

@@ -358,12 +358,12 @@ def main():
     win_notifyoff = True
 
 
-    chrome_options = Options()
+    chrome_options = webdriver.ChromeOptions()
     #options = uc.ChromeOptions()
     #options.headless = True
     #options.add_argument("--no sandbox")
     #options.add_argument("--disable-dev-shm-usage")
-    
+    chrome_options.set_capability('browserless:token', os.environ['BROWSER_TOKEN'])
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     #chrome_options.binary_location = "/usr/bin/google-chrome"  # molto importante
@@ -373,7 +373,8 @@ def main():
     #chrome_options.binary_location = "/usr/bin/google-chrome"
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36")
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    driver = webdriver.Remote(command_executor=os.environ['BROWSER_WEBDRIVER_ENDPOINT'],
+    options=chrome_options)
     init_db()#start database
     global querie_list
     

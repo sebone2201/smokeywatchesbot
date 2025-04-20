@@ -50,6 +50,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia il tuo codice
 COPY . /opt/render/project/src
 WORKDIR /opt/render/project/src
+RUN chmod +x /root/.wdm/drivers/chromedriver/linux64/*/chromedriver || true
+
 
 # Avvia lo script
 CMD ["python3", "main.py"]

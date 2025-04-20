@@ -1,6 +1,5 @@
 FROM python:3.10-slim
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
@@ -15,24 +14,29 @@ RUN apt-get update && apt-get install -y \
     libatk-bridge2.0-0 \
     libgtk-3-0 \
     libx11-xcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxi6 \
+    libxtst6 \
+    libxrandr2 \
+    libgbm1 \
+    libu2f-udev \
     xdg-utils \
     --no-install-recommends
 
-# Install Chrome
+# Install Google Chrome
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
     apt-get update && \
     apt-get install -y google-chrome-stable
 
-# Set display port to avoid crash
+# Set display port
 ENV DISPLAY=:99
 
-# Install Python packages
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your app
 COPY . .
 
-# Run your app
 CMD ["python", "main.py"]

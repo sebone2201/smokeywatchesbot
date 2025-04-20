@@ -420,7 +420,9 @@ def main():
         
         print("Stopping bot...")
   finally:
-        driver.quit()
+        if driver:
+
+          driver.quit()
 
 
 

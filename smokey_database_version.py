@@ -349,10 +349,12 @@ def in_between(now, start, end):
         return start <= now or now < end
 
 def main():
+  global driver
+  driver = None
   try:
     ### Setup commands ###
     global win_notifyoff
-    global driver
+    
     win_notifyoff = True
 
 

@@ -363,7 +363,7 @@ def main():
     #options.headless = True
     #options.add_argument("--no sandbox")
     #options.add_argument("--disable-dev-shm-usage")
-    chrome_options.set_capability('browserless:token', os.environ['BROWSER_TOKEN'])
+    chrome_options.set_capability('browserless:token', os.environ['SAOrF6zfQ0gMyZ181815d14f431d1e4daa094f0b18'])
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     #chrome_options.binary_location = "/usr/bin/google-chrome"  # molto importante

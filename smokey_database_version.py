@@ -325,6 +325,14 @@ def send_telegram_messages(messages, chatid):
         request_url = "https://api.telegram.org/bot" + BotapiCredentials + "/sendMessage?chat_id=" + chatid + "&text=" + msg
         requests.get(request_url)
 
+
+def log_db_count():
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    c.execute("SELECT COUNT(*) FROM queries")
+    count = c.fetchone()[0]
+    print(f"DB currently has {count} records.")
+    conn.close()
 def in_between(now, start, end):
     '''A function to check if a time is in between two other times
 
@@ -377,6 +385,7 @@ def main():
     options=chrome_options)
     init_db()#start database
     global querie_list
+
     
 
     querie_list.append(["https://www.subito.it/annunci-italia/vendita/abbigliamento-accessori/orologi-e-gioielli/?q=longiness&shp=true&order=datedesc", "Longiness", "50", "2000","-1002530005192" ])
@@ -419,6 +428,7 @@ def main():
                 print(str(delay) + " seconds to next poll.")
                 #save_queries()
             t.sleep(int(delay))
+            log_db_count()
   except KeyboardInterrupt:
         
         print("Stopping bot...")

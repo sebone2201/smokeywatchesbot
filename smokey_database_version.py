@@ -384,6 +384,7 @@ def main():
     driver = webdriver.Remote(command_executor=os.environ['BROWSER_WEBDRIVER_ENDPOINT'],
     options=chrome_options)
     init_db()#start database
+    log_db_count()
     global querie_list
 
     
@@ -428,7 +429,7 @@ def main():
                 print(str(delay) + " seconds to next poll.")
                 #save_queries()
             t.sleep(int(delay))
-            log_db_count()
+            
   except KeyboardInterrupt:
         
         print("Stopping bot...")

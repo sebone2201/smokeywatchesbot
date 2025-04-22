@@ -231,6 +231,7 @@ def run_query(url, name, notify, minPrice, maxPrice, chatid):
         t.sleep(3)  # Wait for JS to load the content
 
         products = driver.find_elements(By.CSS_SELECTOR, "div.item-card")
+        print(f"[DEBUG] Found {len(products)} products on page.")
 
         for product in products:
         

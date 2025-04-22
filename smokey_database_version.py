@@ -232,6 +232,9 @@ def run_query(url, name, notify, minPrice, maxPrice, chatid):
 
         products = driver.find_elements(By.CSS_SELECTOR, "div.item-card")
         print(f"[DEBUG] Found {len(products)} products on page.")
+        print(driver.page_source[:2000])  # First 2k chars of page
+
+
 
         for product in products:
         
